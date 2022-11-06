@@ -31,19 +31,16 @@ namespace SampleProjectManager.Module.Controllers
             if (customer != null && !string.IsNullOrEmpty(customer.VatNumber))
             {
                 HttpClient httpClient = new HttpClient();
-
-                var date = DateTime.Now.ToString("yyyy-MM-dd");
-                var responseFromWeb = await httpClient.GetAsync($"https://wl-api.mf.gov.pl/api/search/nip/{nipValue}?date={date}");
+                
+                var responseFromWeb = await httpClient.GetAsync($"https://wl-api.mf.gov.pl/api/search/nip/{nipValue}?date={DateTime.Now.ToString("yyyy-MM-dd")}");
                 var contentString = await responseFromWeb.Content.ReadAsStringAsync();
                 var responseDto = JsonConvert.DeserializeObject<ResponseDto>(contentString);
-
 
                 customer.Company = responseDto.result.subject.name;
                 customer.ResidenceAddress = responseDto.result.subject.residenceAddress;
                 customer.WorkingAddress = responseDto.result.subject.workingAddress;
                 customer.Krs = responseDto.result.subject.krs;
                 customer.Regon = responseDto.result.subject.regon;
-
 
             }
         }
