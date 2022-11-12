@@ -18,10 +18,10 @@ namespace SampleProjectManager.Module.Controllers
 
             TargetObjectType = typeof(InvoiceItem);
             // Target required Views (use the TargetXXX properties) and create their Actions.
-            addItemsAction = new SimpleAction(this, "AddItemsAction", DevExpress.Persistent.Base.PredefinedCategory.Unspecified);
+            addItemsAction = new SimpleAction(this, "AddItemsAction", DevExpress.Persistent.Base.PredefinedCategory.PopupActions);
             addItemsAction.Execute += addItemsAction_Execute;
 
-            copyToInvoiceItemsAction = new SimpleAction(this, "CopyAction", DevExpress.Persistent.Base.PredefinedCategory.Unspecified);
+            copyToInvoiceItemsAction = new SimpleAction(this, "CopyAction", DevExpress.Persistent.Base.PredefinedCategory.PopupActions);
             copyToInvoiceItemsAction.Execute += copyToInvoiceItemsAction_Execute;
             
 
